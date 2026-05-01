@@ -1,0 +1,26 @@
+services:
+  redeclipse-server:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: redeclipse-server
+    restart: unless-stopped
+    environment:
+      RE_SERVER_MODE: "3"
+      RE_MAX_CLIENTS: "16"
+      RE_DEFAULT_MAP: "forge"
+      RE_JOIN_PASS: "${RE_JOIN_PASS}"
+      RE_ADMIN_PASS: "${RE_ADMIN_PASS}"
+    volumes:
+      - /mnt/user/appdata/redeclipse/data:/usr/lib/games/redeclipse/data
+      - /mnt/user/appdata/redeclipse/config:/home/redeclipse/.redeclipse
+      - /dev/shm/redeclipse:/dev/shm/redeclipse
+    ports:
+      - "28801:28801/udp"
+      - "28852:28852/tcp"
+    networks:
+      - ibranet
+
+networks:
+  ibranet:
+    driver: bridge
