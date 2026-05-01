@@ -1,110 +1,46 @@
 # Red Eclipse Ultimate Developer Toolkit
 
-A no-code/low-code ecosystem for Red Eclipse that helps players, creators, and server admins build maps, mutators, and deployments with guided mini-apps powered by PowerShell, C#, and cross-platform automation.
+Complete cross-platform toolkit for Red Eclipse with Windows C# app suite, Linux GUI scripts, PowerShell automation core, IPC bridge, and Docker server orchestration.
 
-## Vision
-- Turn creative players into developers with safe, visual, guided tooling.
-- Generate validated backend code and configuration automatically.
-- Reuse shared object-oriented libraries to eliminate repetitive logic.
-- Run natively on **Windows** and **Ubuntu** with installers for both.
+## What is included
+- Windows native C# apps (WinForms):
+  - Toolkit Launcher
+  - Map Designer
+  - Mutator Builder
+  - Asset Pipeline
+  - Server Orchestrator
+- Linux GUI + automation:
+  - Zenity launcher
+  - Healthcheck/start-all scripts
+  - systemd service template
+- Shared automation/runtime:
+  - PowerShell modules + mini-app scripts
+  - Node IPC bridge (WebSocket + UNIX socket + UDP/TCP forward)
+  - Dockerized Red Eclipse dedicated server runtime
 
-## Feature Areas
-1. **Mini Apps (GUI-first)**
-   - Map Designer Assistant
-   - Mutator Builder Wizard
-   - Asset Pipeline Manager
-   - Server Orchestrator Console
-2. **Cross-platform Runtime**
-   - PowerShell 7 automation everywhere
-   - C# GUI on Windows and Ubuntu via .NET
-3. **Engine Integration**
-   - IPC bridge for UNIX sockets, Windows named pipes, and WebSocket relay
-   - CubeScript generation and command streaming
-4. **Container Operations**
-   - Dockerized dedicated server stack with `/dev/shm` acceleration
+## Build and run (Windows)
+1. `powershell -ExecutionPolicy RemoteSigned -File installers/windows/install-devkit.ps1`
+2. `dotnet build src/csharp/RedEclipse.DevKit.Windows.Launcher/RedEclipse.DevKit.Windows.Launcher.csproj`
+3. `dotnet run --project src/csharp/RedEclipse.DevKit.Windows.Launcher`
 
-## Repository Layout
-- `src/launcher` - kiosk + local host launcher scripts.
-- `src/frontend` - lightweight web dashboard.
-- `src/ipc_bridge` - command bridge services.
-- `src/powershell` - mini-app orchestration and shared modules.
-- `src/csharp` - object-oriented shared library + GUI shell.
-- `installers/windows` - bootstrap and packaging scripts.
-- `installers/ubuntu` - apt/bootstrap installer scripts.
-- `docker` - container build and compose runtime.
-- `.agents/skills` - OpenClaw skill bundles.
-- `.codex` - durable agent memory and plans.
+## Build and run (Ubuntu)
+1. `bash installers/ubuntu/install-devkit.sh`
+2. `src/linux/scripts/devkit-healthcheck.sh`
+3. `src/linux/gui/devkit-launcher.sh`
 
-## Prerequisites
-- Windows 10/11 or Ubuntu 22.04+
-- PowerShell 7+
-- .NET 8 SDK
-- Node.js 20+
-- Docker + Docker Compose plugin
+## Core services
+- IPC Bridge: `cd src/ipc_bridge && npm install && npm start`
+- Docker server: `docker compose -f docker/docker-compose.yml up --build`
+- PowerShell core: `pwsh -File src/powershell/Core/Start-DevKit.ps1`
 
-## Quick Start (Windows)
-1. Open PowerShell as Administrator.
-2. Run installer:
-   - `powershell -ExecutionPolicy RemoteSigned -File installers/windows/install-devkit.ps1`
-3. Launch toolkit shell:
-   - `powershell -ExecutionPolicy RemoteSigned -File src/powershell/Core/Start-DevKit.ps1`
-4. Open GUI hub:
-   - `dotnet run --project src/csharp/RedEclipse.DevKit.Gui`
-
-## Quick Start (Ubuntu)
-1. Run installer:
-   - `bash installers/ubuntu/install-devkit.sh`
-2. Launch automation core:
-   - `pwsh -File src/powershell/Core/Start-DevKit.ps1`
-3. Start GUI hub:
-   - `dotnet run --project src/csharp/RedEclipse.DevKit.Gui`
-
-## Running Core Services
-### IPC bridge
-```bash
-cd src/ipc_bridge
-npm install
-npm start
-```
-
-### Docker server
-```bash
-docker compose -f docker/docker-compose.yml up --build
-```
-
-## Mini App Usage
-### Map Designer Assistant
-- Loads map metadata
-- Sends `/remip` and `/calclight`
-- Records optimization logs
-
-### Mutator Builder Wizard
-- Select mode: Deathmatch / CTF / Bomber Ball
-- Configure gravity, loadout, scoring
-- Exports CubeScript file into `scripts/mutators`
-
-### Asset Pipeline Manager
-- Watches `assets/models`, `assets/textures`, `assets/materials`
-- Runs conversion pipeline presets
-- Generates mapmodel config stubs
-
-### Server Orchestrator Console
-- Applies safe server presets
-- Rotates maps and mutators
-- Writes generated config to runtime paths
-
-## Security and Safety
-- Secrets are environment variables only.
-- Commands are validated before forwarding.
-- Runtime logs can be redirected to `/dev/shm/redeclipse`.
-
-## Development Workflow
-- Add shared PowerShell logic in `src/powershell/Modules`.
-- Add OO reusable C# logic in `RedEclipse.DevKit.Core`.
-- Keep GUI orchestration in `RedEclipse.DevKit.Gui` thin.
-- Document all new tools under `docs/guides`.
+## Project structure
+- `src/csharp/RedEclipse.DevKit.Windows.*` Windows desktop application suite.
+- `src/linux/gui` Linux no-code GUI launcher scripts.
+- `src/linux/scripts` Linux orchestration and health scripts.
+- `src/powershell` shared business logic and code generation.
+- `src/ipc_bridge` engine communication bridge.
+- `docker` dedicated server runtime.
+- `installers` bootstrap installers per OS.
 
 ## License
-- Code: zlib-compatible (Red Eclipse style).
-- Content/docs/assets: CC BY-SA aligned where noted.
-- See `LICENSE`.
+See `LICENSE` (Red Eclipse-style zlib + CC BY-SA summary).
