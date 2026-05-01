@@ -10,7 +10,7 @@ if ! command -v zenity >/dev/null 2>&1; then
 fi
 
 choice=$(zenity --list --title="Red Eclipse DevKit" --width=560 --height=500 --column="Launcher" \
-  "Start Entire Suite" "Map Designer" "Mutator Builder" "Asset Pipeline" "Asset Manager" "Model Manager" "Variable Preset Manager" "Procedural World Builder" "Server Orchestrator" "Install In-Game Mod Menu" "Open Menu Designer App" "Start IPC Bridge" "Open Web Dashboard" "Start Docker Server")
+  "Start Entire Suite" "Map Designer" "Mutator Builder" "Asset Pipeline" "Asset Manager" "Model Manager" "Variable Preset Manager" "Procedural World Builder" "Server Orchestrator" "Install In-Game Mod Menu" "Open Menu Designer App" "Start IPC Bridge" "Open Web Dashboard" "Start Docker Server" "Linux Server Manager")
 
 case "$choice" in
   "Start Entire Suite") src/linux/scripts/devkit-start-all.sh ;;
@@ -27,4 +27,5 @@ case "$choice" in
   "Start IPC Bridge") (cd src/ipc_bridge && npm start) ;;
   "Open Web Dashboard") pwsh -File src/launcher/launch-kiosk.ps1 ;;
   "Start Docker Server") docker compose -f docker/docker-compose.yml up --build ;;
+  "Linux Server Manager") pwsh -File src/powershell/Tools/ServerManager/Start-ServerManager.ps1 ;;
 esac
