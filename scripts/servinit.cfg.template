@@ -1,0 +1,4 @@
+// Red Eclipse server initialization template
+// secrets must come from environment variables during launch
+sv_name "Red Eclipse DevTools Server"
+sv_motd "Managed by external toolset"
