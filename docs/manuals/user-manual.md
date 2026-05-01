@@ -69,6 +69,19 @@ Command:
 Command:
 `pwsh -File src/powershell/Tools/ServerOrchestrator/Start-ServerOrchestrator.ps1`
 
+
+### 3.7 Procedural World Builder
+Command:
+`pwsh -File src/powershell/Tools/ProceduralWorldBuilder/Start-ProceduralWorldBuilder.ps1 -Seed <seed> -Width <w> -Height <h> -EntityCount <n>`
+
+Outputs world and entity files under `scripts/procgen/` for immediate in-game exec/import workflows.
+
+### 3.8 Visual Procedural Editor
+Open:
+`src/frontend/procgen/index.html`
+
+Use Preview Terrain for rapid seed exploration and Copy Generation Command to run builder scripts.
+
 ## 4. In-game Mod Menu
 1. Install mod menu:
 `pwsh -File scripts/modmenu/install-modmenu.ps1 -RedEclipseDataPath <your_game_data_path>`

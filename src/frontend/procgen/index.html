@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Procedural World Builder</title><link rel="stylesheet" href="procgen.css"></head>
+<body>
+  <h1>Procedural World Builder</h1>
+  <p>Create world seeds and entity layouts visually, then export cfg/json for Red Eclipse.</p>
+  <label>Seed <input id="seed" type="number" value="1337"></label>
+  <label>Width <input id="width" type="number" value="64"></label>
+  <label>Height <input id="height" type="number" value="64"></label>
+  <button id="preview">Preview Terrain</button>
+  <button id="copy">Copy Generation Command</button>
+  <canvas id="terrain" width="512" height="512"></canvas>
+  <pre id="cmd"></pre>
+  <script src="procgen.js"></script>
+</body>
+</html>

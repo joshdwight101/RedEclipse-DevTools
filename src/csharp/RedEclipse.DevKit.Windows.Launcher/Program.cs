@@ -23,6 +23,7 @@ panel.Controls.Add(MakeButton("Launch Server Orchestrator", () => RunPowerShell(
 panel.Controls.Add(MakeButton("Launch Asset Manager", () => RunPowerShell("src/powershell/Tools/AssetManager/Start-AssetManager.ps1")));
 panel.Controls.Add(MakeButton("Launch Model Manager", () => RunPowerShell("src/powershell/Tools/ModelManager/Start-ModelManager.ps1")));
 panel.Controls.Add(MakeButton("Launch Variable Preset Manager", () => RunPowerShell("src/powershell/Tools/VariablePresetManager/Start-VariablePresetManager.ps1")));
+panel.Controls.Add(MakeButton("Launch Procedural World Builder", () => RunPowerShell("src/powershell/Tools/ProceduralWorldBuilder/Start-ProceduralWorldBuilder.ps1")));
 panel.Controls.Add(MakeButton("Start IPC Bridge", () => Process.Start(new ProcessStartInfo
 {
     FileName = "cmd.exe",
