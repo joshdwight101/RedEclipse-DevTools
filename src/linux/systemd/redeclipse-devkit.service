@@ -1,0 +1,12 @@
+[Unit]
+Description=Red Eclipse DevKit Core Runtime
+After=network.target docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/RedEclipse-DevTools
+ExecStart=/usr/bin/pwsh -File %h/RedEclipse-DevTools/src/powershell/Core/Start-DevKit.ps1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
