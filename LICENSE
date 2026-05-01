@@ -1,0 +1,30 @@
+Red Eclipse License Summary (zlib + CC BY-SA)
+
+Code license (zlib):
+This software is provided 'as-is', without any express or implied warranty.
+In no event will the authors be held liable for any damages arising from the use
+of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+Content license (CC BY-SA 3.0):
+Game content and assets in Red Eclipse are generally distributed under
+Creative Commons Attribution-ShareAlike 3.0 (or compatible updates where
+explicitly noted). Attribution must be preserved and derivative content
+must be shared under the same license terms.
+
+Project policy for this repository:
+- Source code defaults to zlib-compatible terms above.
+- Documentation and original authored assets in this repository are provided
+  under CC BY-SA 3.0 unless a file-level notice states otherwise.
+- Third-party content keeps its own upstream licensing.

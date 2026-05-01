@@ -1,0 +1,16 @@
+services:
+  redeclipse-server:
+    build:
+      context: ../../..
+      dockerfile: docker/Dockerfile
+    container_name: redeclipse-server
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/usr/lib/games/redeclipse/data
+      - ./config:/home/redeclipse/.redeclipse
+      - /dev/shm/redeclipse:/dev/shm/redeclipse
+    ports:
+      - "28801:28801/udp"
+      - "28852:28852/tcp"
