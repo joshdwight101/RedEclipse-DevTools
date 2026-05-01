@@ -19,6 +19,10 @@ panel.Controls.Add(MakeButton("Launch Map Designer", () => RunPowerShell("src/po
 panel.Controls.Add(MakeButton("Launch Mutator Builder", () => RunPowerShell("src/powershell/Tools/MutatorBuilder/Start-MutatorBuilder.ps1")));
 panel.Controls.Add(MakeButton("Launch Asset Pipeline", () => RunPowerShell("src/powershell/Tools/AssetPipeline/Start-AssetPipeline.ps1")));
 panel.Controls.Add(MakeButton("Launch Server Orchestrator", () => RunPowerShell("src/powershell/Tools/ServerOrchestrator/Start-ServerOrchestrator.ps1")));
+
+panel.Controls.Add(MakeButton("Launch Asset Manager", () => RunPowerShell("src/powershell/Tools/AssetManager/Start-AssetManager.ps1")));
+panel.Controls.Add(MakeButton("Launch Model Manager", () => RunPowerShell("src/powershell/Tools/ModelManager/Start-ModelManager.ps1")));
+panel.Controls.Add(MakeButton("Launch Variable Preset Manager", () => RunPowerShell("src/powershell/Tools/VariablePresetManager/Start-VariablePresetManager.ps1")));
 panel.Controls.Add(MakeButton("Start IPC Bridge", () => Process.Start(new ProcessStartInfo
 {
     FileName = "cmd.exe",
