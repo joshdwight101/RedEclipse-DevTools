@@ -24,6 +24,7 @@ panel.Controls.Add(MakeButton("Launch Asset Manager", () => RunPowerShell("src/p
 panel.Controls.Add(MakeButton("Launch Model Manager", () => RunPowerShell("src/powershell/Tools/ModelManager/Start-ModelManager.ps1")));
 panel.Controls.Add(MakeButton("Launch Variable Preset Manager", () => RunPowerShell("src/powershell/Tools/VariablePresetManager/Start-VariablePresetManager.ps1")));
 panel.Controls.Add(MakeButton("Launch Procedural World Builder", () => RunPowerShell("src/powershell/Tools/ProceduralWorldBuilder/Start-ProceduralWorldBuilder.ps1")));
+panel.Controls.Add(MakeButton("Open Menu Designer App", () => Process.Start(new ProcessStartInfo{ FileName = "dotnet", Arguments = "run --project src/csharp/RedEclipse.DevKit.MenuDesigner", WorkingDirectory = ToolkitPaths.Script("."), UseShellExecute = true })));
 panel.Controls.Add(MakeButton("Start IPC Bridge", () => Process.Start(new ProcessStartInfo
 {
     FileName = "cmd.exe",
