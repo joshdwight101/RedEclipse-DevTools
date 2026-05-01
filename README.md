@@ -1,46 +1,47 @@
 # Red Eclipse Ultimate Developer Toolkit
 
-Complete cross-platform toolkit for Red Eclipse with Windows C# app suite, Linux GUI scripts, PowerShell automation core, IPC bridge, and Docker server orchestration.
+One-command installers for Windows and Linux that set up dependencies, install the toolkit, and provide a launcher GUI to run the entire suite.
 
-## What is included
-- Windows native C# apps (WinForms):
-  - Toolkit Launcher
-  - Map Designer
-  - Mutator Builder
-  - Asset Pipeline
-  - Server Orchestrator
-- Linux GUI + automation:
-  - Zenity launcher
-  - Healthcheck/start-all scripts
-  - systemd service template
-- Shared automation/runtime:
-  - PowerShell modules + mini-app scripts
-  - Node IPC bridge (WebSocket + UNIX socket + UDP/TCP forward)
-  - Dockerized Red Eclipse dedicated server runtime
+## Windows (fully automated)
+Run in elevated PowerShell from repo root:
 
-## Build and run (Windows)
-1. `powershell -ExecutionPolicy RemoteSigned -File installers/windows/install-devkit.ps1`
-2. `dotnet build src/csharp/RedEclipse.DevKit.Windows.Launcher/RedEclipse.DevKit.Windows.Launcher.csproj`
-3. `dotnet run --project src/csharp/RedEclipse.DevKit.Windows.Launcher`
+`powershell -ExecutionPolicy RemoteSigned -File installers/windows/install-devkit.ps1`
 
-## Build and run (Ubuntu)
-1. `bash installers/ubuntu/install-devkit.sh`
-2. `src/linux/scripts/devkit-healthcheck.sh`
-3. `src/linux/gui/devkit-launcher.sh`
+What it does:
+- Installs missing dependencies with `winget` (Git, Node LTS, .NET 8 SDK, Docker Desktop, PowerShell 7).
+- Copies toolkit files to `%ProgramFiles%\RedEclipseDevKit`.
+- Installs Node dependencies for IPC bridge.
+- Publishes the Windows launcher app.
+- Creates desktop + Start Menu shortcuts named **Red Eclipse DevKit**.
 
-## Core services
-- IPC Bridge: `cd src/ipc_bridge && npm install && npm start`
-- Docker server: `docker compose -f docker/docker-compose.yml up --build`
-- PowerShell core: `pwsh -File src/powershell/Core/Start-DevKit.ps1`
+## Linux Ubuntu (fully automated)
+Run with sudo from repo root:
 
-## Project structure
-- `src/csharp/RedEclipse.DevKit.Windows.*` Windows desktop application suite.
-- `src/linux/gui` Linux no-code GUI launcher scripts.
-- `src/linux/scripts` Linux orchestration and health scripts.
-- `src/powershell` shared business logic and code generation.
-- `src/ipc_bridge` engine communication bridge.
-- `docker` dedicated server runtime.
-- `installers` bootstrap installers per OS.
+`sudo bash installers/ubuntu/install-devkit.sh`
 
-## License
-See `LICENSE` (Red Eclipse-style zlib + CC BY-SA summary).
+What it does:
+- Installs required packages (`zenity`, `node`, `docker`, `pwsh`, `.NET 8` when available).
+- Copies toolkit to `/opt/redeclipse-devkit`.
+- Installs Node dependencies for IPC bridge.
+- Creates launcher command `redeclipse-devkit`.
+- Creates application menu entry **Red Eclipse DevKit**.
+
+## Launcher GUI capabilities
+Both OS launchers provide options to:
+- Start entire suite
+- Launch Map Designer
+- Launch Mutator Builder
+- Launch Asset Pipeline
+- Launch Server Orchestrator
+- Start IPC bridge
+- Open web dashboard
+- Start Docker server runtime
+
+## Project Structure
+- `src/csharp/RedEclipse.DevKit.Windows.*`: Windows native app launcher + app shells.
+- `src/linux/gui`: Linux launcher GUI.
+- `src/linux/scripts`: Linux automation scripts.
+- `src/powershell`: Shared business logic modules and tool scripts.
+- `src/ipc_bridge`: Node IPC bridge.
+- `docker`: Dedicated server stack.
+- `installers`: Automated setup entrypoints.
